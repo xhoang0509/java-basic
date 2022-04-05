@@ -4,6 +4,8 @@
  */
 package made1;
 
+import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -31,11 +33,11 @@ public class HinhCN extends HinhPhang {
     }
 
     public void setDai(int dai) throws Exception {
+
         if (dai < 0) {
             throw new Exception("Chieu dai phai lon hon 0");
         }
         this.dai = dai;
-
     }
 
     public int getRong() {
@@ -45,43 +47,52 @@ public class HinhCN extends HinhPhang {
     public void setRong(int rong) throws Exception {
 
         if (rong < 0) {
-            throw new Exception("Chieu dai phai lon hon 0");
+            throw new Exception("Chieu rong phai lon hon 0");
         }
         if (rong > this.dai) {
-            throw new Exception("Chieu rong khong hop le");
+            throw new Exception("=> Chieu rong khong hop le");
         }
         this.rong = rong;
     }
 
     public void nhap() {
+        int temp;
         while (true) {
             try {
-                Scanner s = new Scanner(System.in);
-                System.out.print("Nhap ma: ");
-                try {
-                    setMaHinh(s.nextLine());
-                    System.out.print("Nhap chieu dai: ");
-                    setDai(s.nextInt());
-                    System.out.print("Nhap chieu rong: ");
-                    setRong(s.nextInt());
-                    break;
-                } catch (Exception e) {
-                    System.out.println(e.getMessage() + " nhap lai");
+                Random rd = new Random();
+                temp = rd.nextInt(10) + 1;
+                String temp2 = "";
+                if (temp < 10) {
+                    temp2 = "0" + String.valueOf(temp);
+                } else {
+                    temp2 = String.valueOf(temp);
                 }
+                setMaHinh("CN" + temp2);
+                while (true) {
+                    try {
+                        setDai(rd.nextInt(100) + 1);
+                        setRong(rd.nextInt(100) + 1);
+                        System.out.println("Nhap chieu dai, rong thanh cong !");
+                        break;
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage() + ", dang nhap lai");
+                    }
+                }
+                break;
             } catch (Exception e) {
-                System.out.println(e.getMessage() + " nhap lai ");
+                System.out.println(e.getMessage() + ", dang nhap lai ");
             }
         }
     }
 
     public static void inTieuDe() {
-        System.out.printf("%-10s %10s %10s %10s %10s",
-                "Ma hinh", "chieu dai", "chieu rong", "chu vi", "chu vi");
+        System.out.printf("%-10s %10s %10s %10s %10s %n",
+                "Ma hinh", "chieu dai", "chieu rong", "chu vi", "dien tich");
     }
 
     public void xuat() {
-        System.out.printf("%-10s %10s %10s %10s %10s",
-                "Ma hinh", "chieu dai", "chieu rong", "chu vi", "chu vi");
+        System.out.printf("%-10s %10d %10d %10d %10d %n",
+                maHinh, dai, rong, tinhCV(), tinhDT());
     }
 
     @Override
@@ -93,4 +104,20 @@ public class HinhCN extends HinhPhang {
     int tinhDT() {
         return dai * rong;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final HinhCN other = (HinhCN) obj;
+        return Objects.equals(this.maHinh, other.maHinh);
+    }
+
 }
