@@ -4,6 +4,10 @@
  */
 package bai2_sinhvien;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,30 +17,27 @@ import java.util.Scanner;
 public class SinhVienDemo {
 
 //    static 
-    static SinhVien[] dsSV;
+//    static SinhVien[] dsSV;
+    static List<SinhVien> dsSV = new ArrayList<SinhVien>();
     static int n;
 
     static void nhapDS() {
-        while (true || n < 0) {
+        while (true) {
             try {
                 Scanner s = new Scanner(System.in);
                 System.out.print("Nhap so luong sinh vien: ");
                 n = s.nextInt();
 
-                if (n < 0) {
-                    continue;
-                } else {
-
-                    dsSV = new SinhVien[n];
+                if (n > 0) {
                     for (int i = 0; i < n; i++) {
-                        System.out.println("\n\t\t=== Nhap sinh vien " + (i + 1));
-                        dsSV[i] = new SinhVien();
-                        dsSV[i].nhap();
+                        SinhVien temp = new SinhVien();
+                        System.out.println("\n\t\tNHap sinh vien " + (i + 1));
+                        temp.nhap();
+                        dsSV.add(temp);
                     }
 
-                    break;
                 }
-
+                break;
             } catch (Exception e) {
                 System.out.println("Du lieu sai. Nhap lai !");
             }
@@ -44,14 +45,59 @@ public class SinhVienDemo {
     }
 
     static void inDS() {
-        for (int i = 0; i < n; i++) {
-            System.out.println(dsSV[i]);
+        for (SinhVien sinhVien : dsSV) {
+            sinhVien.xuat();
         }
+    }
+
+    static void sapXepTheoTen() {
+        Collections.sort(dsSV, new Comparator<SinhVien>() {
+            @Override
+            public int compare(SinhVien o1, SinhVien o2) {
+                return o1.getTen().compareTo(o2.getTen());
+            }
+        });
+
+        System.out.println("\n\t\tDANH SACH SAP XEP THEO TEN LA");
+        SinhVien.inTieuDe();
+        inDS();
+    }
+
+    static SinhVien diemTBMax() {
+        SinhVien temp = Collections.max(dsSV, new Comparator<SinhVien>() {
+            @Override
+            public int compare(SinhVien o1, SinhVien o2) {
+                return (int) (o1.getDiemTB() - o2.getDiemTB());
+            }
+
+        });
+        return temp;
+    }
+
+    static SinhVien diemTBMin() {
+        SinhVien temp = Collections.min(dsSV, new Comparator<SinhVien>() {
+            @Override
+            public int compare(SinhVien o1, SinhVien o2) {
+                return (int) (o1.getDiemTB() - o2.getDiemTB());
+            }
+
+        });
+        return temp;
     }
 
     public static void main(String[] args) {
         nhapDS();
         SinhVien.inTieuDe();
         inDS();
+
+        sapXepTheoTen();
+
+        System.out.println("\n\t\tSINH VIEN CO DIEM TB MAX LA + ");
+        SinhVien.inTieuDe();
+        diemTBMax().xuat();
+
+        System.out.println("\n\t\tSINH VIEN CO DIEM TB MIN LA + ");
+        SinhVien.inTieuDe();
+        diemTBMin().xuat();
     }
 }

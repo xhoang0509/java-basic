@@ -12,7 +12,6 @@ import java.util.Scanner;
  */
 public class SinhVien {
 
-    static Scanner s = new Scanner(System.in);
     private String maSV;
     private String hoTen;
     private float diemLT;
@@ -24,21 +23,37 @@ public class SinhVien {
     }
 
     public void setMaSV(String maSV) throws Exception {
-        this.maSV = maSV;
+
         if (maSV.isEmpty()) {
             throw new Exception("Yeu cau ma sv khong duoc de trong !");
         }
+        this.maSV = maSV;
+    }
+
+    public float getDiemTB() {
+        return diemTB;
+    }
+
+    public void setDiemTB(float diemTB) {
+        this.diemTB = diemTB;
     }
 
     public String getHoTen() {
         return hoTen;
     }
 
+    // chi lay ten sinh vien 
+    public String getTen() {
+        String[] tens = hoTen.trim().split(" ");
+        return tens[tens.length - 1];
+    }
+
     public void setHoTen(String hoTen) throws Exception {
-        this.hoTen = hoTen;
+
         if (hoTen.isEmpty()) {
             throw new Exception("Yeu cau ho ten khong dc de trong");
         }
+        this.hoTen = hoTen;
     }
 
     public float getDiemLT() {
@@ -82,6 +97,7 @@ public class SinhVien {
     public void nhap() {
         while (true) {
             try {
+                Scanner s = new Scanner(System.in);
                 System.out.print("Nhap ma sv: ");
                 setMaSV(s.nextLine());
                 System.out.print("Nhap ho ten: ");
@@ -91,7 +107,7 @@ public class SinhVien {
                 System.out.print("Nhap diem thuc hanh: ");
                 setDiemTH(s.nextFloat());
 
-                diemTB = (diemLT + diemTH) / 2;
+                setDiemTB((diemLT + diemTH) / 2);
                 break;
             } catch (Exception e) {
                 System.out.println(e.getMessage() + " NHAP LAI !!! ");
@@ -108,8 +124,13 @@ public class SinhVien {
     }
 
     public static void inTieuDe() {
-        System.out.printf("%-10s %-15s %10s %10s %10s %-10s",
-                "Ma sv", "Ho ten", "Diem LT", "Diem TH", "Diem TB", "Ket qua\n");
+        System.out.printf("%-10s %-15s %10s %10s %10s %-10s %n",
+                "Ma sv", "Ho ten", "Diem LT", "Diem TH", "Diem TB", "Ket qua");
+    }
+
+    public void xuat() {
+        System.out.printf("%-10s %-15s %10.2f %10.2f %10.2f %-10s %n",
+                maSV, hoTen, diemLT, diemTH, diemTB, getKetQua());
     }
 
     @Override
