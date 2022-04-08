@@ -2,26 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tam_giac_can;
+package ma_de_3_v2;
 
 /**
  *
  * @author XuanHoang
  */
-public abstract class TamGiac {
+public abstract class HinhPhang {
 
     abstract int tinhCV();
 
     abstract float tinhDT();
-//    abstract void input();
-//    abstract void output();
 
     @Override
     public String toString() {
-        return "TamGiac{"
-                + " tinhCV" + tinhCV()
-                + " tinhDT=" + tinhDT() + '}';
-
+        return "HinhPhang{"
+                + " tinhCV=" + tinhCV()
+                + " tinhDT=" + tinhDT()
+                + '}';
     }
 
 }

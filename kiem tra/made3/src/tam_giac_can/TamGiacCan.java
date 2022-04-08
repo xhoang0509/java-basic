@@ -82,8 +82,8 @@ public class TamGiacCan extends TamGiac {
         return (float) Math.sqrt(p * (p - a) * (p - b) * (p - c));
     }
 
-    @Override
-    void input() {
+    
+    public void input() {
         while (true) {
             try {
                 Scanner s = new Scanner(System.in);
@@ -112,8 +112,8 @@ public class TamGiacCan extends TamGiac {
         System.out.printf("%-10s %10s %10s %10s %10s %10s", "ma", 'a', 'b', 'c', "chu vi", "dien tich\n");
     }
 
-    @Override
-    void output() {
+    
+    public void output() {
         System.out.printf("%-10s %10d %10d %10d %10d %10.2f", maHinh, a, b, c, tinhCV(), tinhDT());
         System.out.println("");
     }
