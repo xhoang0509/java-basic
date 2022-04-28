@@ -111,17 +111,17 @@ public class SinhVienDemo {
         
         System.out.println(dsSV);
 
-//        themSVDau();
-//        themSVCuoi();
-//
-//        xoaSVDau();
-//        xoaSVCuoi();
-//
-//        getSVDau();
-//        getSVCuoi();
-//
-//        suaSV();
-//        sapXepTheoDiemTK();
+        themSVDau();
+        themSVCuoi();
+
+        xoaSVDau();
+        xoaSVCuoi();
+
+        getSVDau();
+        getSVCuoi();
+
+        suaSV();
+        sapXepTheoDiemTK();
 
     }
 

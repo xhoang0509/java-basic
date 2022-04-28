@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="quan_ly_phong_hoc">
+  <ClassDiagramComponents>
+    <Class name="PhongHoc" package="quan_ly_phong_hoc" visibility="public" xPosition="230.0" yPosition="261.0">
+      <Fields>
+        <Field name="maPhong" type="String" visibility="protected"/>
+        <Field name="dayNha" type="String" visibility="protected"/>
+        <Field name="dienTich" type="float" visibility="protected"/>
+        <Field name="soBongDen" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PhongHocLyThuyet" package="quan_ly_phong_hoc" visibility="public" xPosition="230.0" yPosition="53.0">
+      <Fields>
+        <Field name="soLuongMayChieu" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PhongHocMayTinh" package="quan_ly_phong_hoc" visibility="public" xPosition="542.0" yPosition="201.0">
+      <Fields>
+        <Field name="soLuongMayTinh" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="PhuongHocThiNghiem" package="quan_ly_phong_hoc" visibility="public" xPosition="542.0" yPosition="382.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="quan_ly_phong_hoc.PhongHocMayTinh" target="quan_ly_phong_hoc.PhongHoc"/>
+    <IsRelation name="is" source="quan_ly_phong_hoc.PhuongHocThiNghiem" target="quan_ly_phong_hoc.PhongHoc"/>
+    <IsRelation name="is" source="quan_ly_phong_hoc.PhongHocLyThuyet" target="quan_ly_phong_hoc.PhongHoc"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
